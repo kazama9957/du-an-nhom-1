@@ -1,0 +1,35 @@
+﻿@model IEnumerable<QLNS.Models.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Feedback List</h2>
+@if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin")
+{
+    <p>
+        @Html.ActionLink("Create new", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>EmployeeID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>FeedbackDate</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(item.FeedbackID)</td>
+            <td>@item.EmployeeID</td>
+            <td>@item.Title</td>
+            <td>@item.Content</td>
+            <td>@item.FeedbackDate</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.FeedbackID }) | @Html.ActionLink("Details", "Details", new { id = item.FeedbackID }) | @Html.ActionLink("Delete", "Delete", new { id = item.FeedbackID })</td>
+        </tr>
+    }
+</table>

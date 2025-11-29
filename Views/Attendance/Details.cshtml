@@ -1,0 +1,21 @@
+﻿@model QLNS.Models.Attendance
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Attendance Details</h2>
+<dl class="dl-horizontal">
+    <dt>EmployeeID</dt>
+    <dd>@Model.EmployeeID</dd>
+    <dt>WorkDate</dt>
+    <dd>@Model.WorkDate</dd>
+    <dt>CheckIn</dt>
+    <dd>@Model.CheckIn</dd>
+    <dt>CheckOut</dt>
+    <dd>@Model.CheckOut</dd>
+    <dt>WorkHours</dt>
+    <dd>@Model.WorkHours</dd>
+</dl>
+<p>@Html.ActionLink("Back to List", "Index")</p>

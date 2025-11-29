@@ -1,0 +1,29 @@
+﻿@model QLNS.Models.Department
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Department</h2>
+
+<h3>Bạn có chắc muốn xóa phòng ban này không?</h3>
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Tên phòng ban</dt>
+        <dd>@Model.DepartmentName</dd>
+
+        <dt>Mô tả</dt>
+        <dd>@Model.Description</dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Department", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.DepartmentID)
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        @Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-secondary" })
+    }
+</div>

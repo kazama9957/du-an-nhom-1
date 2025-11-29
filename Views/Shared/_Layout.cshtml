@@ -1,0 +1,74 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Quản Lý Nhân Sự</title>
+
+    <!-- Bootstrap + CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        @if (Session["UserID"] != null)
+        {
+            <div class="sidebar">
+                <h2>MENU</h2>
+                <nav>
+                    <ul class="nav flex-column mt-4">
+
+                        <li class="nav-item">
+                            @Html.ActionLink("Trang chủ", "Index", "Home", null, new { @class = "nav-link" })
+                        </li>
+
+                        @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin")
+                        {
+                            <li class="nav-item">@Html.ActionLink("Phòng ban", "Index", "Department", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Nhân viên", "Index", "Employee", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Hồ sơ nhân viên", "Index", "EmployeeProfile", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Tài khoản", "Index", "UserAccount", null, new { @class = "nav-link" })</li>
+                        }
+
+                        <!-- Chức năng chung cho cả NV và Admin -->
+                        <li class="nav-item">@Html.ActionLink("Chấm công", "Index", "Attendance", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Lịch làm việc", "Index", "ScheduleWork", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Yêu cầu", "Index", "Request", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Thông báo", "Index", "Feedback", null, new { @class = "nav-link" })</li>
+
+                        <li class="nav-item">
+                            @Html.ActionLink("Đăng xuất", "Logout", "Account", null, new { @class = "nav-link text-danger" })
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        }
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <header>
+                    <h1>@ViewBag.Title</h1>
+                </header>
+
+                @RenderBody()
+            </div>
+        </div>
+
+    <footer class="text-center py-3">
+        © @DateTime.Now.Year - Hệ Thống Quản Lý Nhân Sự
+    </footer>
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

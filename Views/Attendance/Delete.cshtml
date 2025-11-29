@@ -1,0 +1,27 @@
+﻿@model QLNS.Models.Attendance
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Delete Attendance</h2>
+<h4>Bạn có chắc muốn xóa bản ghi này?</h4>
+<dl class="dl-horizontal">
+    <dt>EmployeeID</dt>
+    <dd>@Model.EmployeeID</dd>
+    <dt>WorkDate</dt>
+    <dd>@Model.WorkDate</dd>
+    <dt>CheckIn</dt>
+    <dd>@Model.CheckIn</dd>
+    <dt>CheckOut</dt>
+    <dd>@Model.CheckOut</dd>
+    <dt>WorkHours</dt>
+    <dd>@Model.WorkHours</dd>
+</dl>
+@using (Html.BeginForm("Delete", "Attendance", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.AttendanceID)
+    <button type="submit" class="btn btn-danger">Delete</button>
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>

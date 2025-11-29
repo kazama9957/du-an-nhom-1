@@ -1,0 +1,15 @@
+﻿@model QLNS.Models.Department
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Department Details</h2>
+<dl class="dl-horizontal">
+    <dt>DepartmentName</dt>
+    <dd>@Model.DepartmentName</dd>
+    <dt>Description</dt>
+    <dd>@Model.Description</dd>
+</dl>
+<p>@Html.ActionLink("Back to List", "Index")</p>

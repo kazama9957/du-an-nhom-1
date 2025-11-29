@@ -1,0 +1,41 @@
+﻿@model QLNS.Models.Attendance
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Attendance</h2>
+@using (Html.BeginForm("Edit", "Attendance", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.AttendanceID)
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeID)
+        @Html.DropDownList("EmployeeID", null, "-- Select Employee --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmployeeID)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.WorkDate)
+        @Html.TextBoxFor(model => model.WorkDate, "{0:yyyy-MM-dd}", new { @type = "date" })
+        @Html.ValidationMessageFor(model => model.WorkDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CheckIn)
+        @Html.TextBoxFor(model => model.CheckIn, "{0:hh\\:mm}", new { @type = "time" })
+        @Html.ValidationMessageFor(model => model.CheckIn)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CheckOut)
+        @Html.TextBoxFor(model => model.CheckOut, "{0:hh\\:mm}", new { @type = "time" })
+        @Html.ValidationMessageFor(model => model.CheckOut)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.WorkHours)
+        @Html.EditorFor(model => model.WorkHours)
+        @Html.ValidationMessageFor(model => model.WorkHours)
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+<p>@Html.ActionLink("Back to List", "Index")</p>

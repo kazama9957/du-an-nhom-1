@@ -1,0 +1,19 @@
+﻿@model QLNS.Models.Feedback
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Feedback Details</h2>
+<dl class="dl-horizontal">
+    <dt>EmployeeID</dt>
+    <dd>@Model.EmployeeID</dd>
+    <dt>Title</dt>
+    <dd>@Model.Title</dd>
+    <dt>Content</dt>
+    <dd>@Model.Content</dd>
+    <dt>FeedbackDate</dt>
+    <dd>@Model.FeedbackDate</dd>
+</dl>
+<p>@Html.ActionLink("Back to List", "Index")</p>

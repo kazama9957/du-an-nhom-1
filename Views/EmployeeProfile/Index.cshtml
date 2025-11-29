@@ -1,0 +1,35 @@
+﻿@model IEnumerable<QLNS.Models.EmployeeProfile>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EmployeeProfile List</h2>
+@if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin")
+{
+    <p>
+        @Html.ActionLink("Create new", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>EmployeeID</th>
+        <th>IDCard</th>
+        <th>IssueDate</th>
+        <th>IssuePlace</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(item.ProfileID)</td>
+            <td>@item.EmployeeID</td>
+            <td>@item.IDCard</td>
+            <td>@item.IssueDate</td>
+            <td>@item.IssuePlace</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.ProfileID }) | @Html.ActionLink("Details", "Details", new { id = item.ProfileID }) | @Html.ActionLink("Delete", "Delete", new { id = item.ProfileID })</td>
+        </tr>
+    }
+</table>

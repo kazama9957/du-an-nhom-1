@@ -1,0 +1,32 @@
+﻿@model QLNS.Models.EmployeeProfile
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete EmployeeProfile</h2>
+
+<h4>Are you sure you want to delete this?</h4>
+<hr />
+<dl class="row">
+    <dt>EmployeeID</dt>
+    <dd>@Model.EmployeeID</dd>
+    <dt>IDCard</dt>
+    <dd>@Model.IDCard</dd>
+    <dt>IssueDate</dt>
+    <dd>@Model.IssueDate</dd>
+    <dt>IssuePlace</dt>
+    <dd>@Model.IssuePlace</dd>
+    <dt>EducationLevel</dt>
+    <dd>@Model.EducationLevel</dd>
+    <dt>Experience</dt>
+    <dd>@Model.Experience</dd>
+</dl>
+@using (Html.BeginForm("Delete", "EmployeeProfile", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ProfileID)
+    <button type="submit" class="btn btn-danger">Delete</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary ms-2" })
+}

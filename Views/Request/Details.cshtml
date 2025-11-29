@@ -1,0 +1,21 @@
+﻿@model QLNS.Models.Request
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Request Details</h2>
+<dl class="dl-horizontal">
+    <dt>EmployeeID</dt>
+    <dd>@Model.EmployeeID</dd>
+    <dt>RequestType</dt>
+    <dd>@Model.RequestType</dd>
+    <dt>Content</dt>
+    <dd>@Model.Content</dd>
+    <dt>RequestDate</dt>
+    <dd>@Model.RequestDate</dd>
+    <dt>Status</dt>
+    <dd>@Model.Status</dd>
+</dl>
+<p>@Html.ActionLink("Back to List", "Index")</p>

@@ -1,0 +1,23 @@
+﻿@model QLNS.Models.EmployeeProfile
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EmployeeProfile Details</h2>
+<dl class="dl-horizontal">
+    <dt>EmployeeID</dt>
+    <dd>@Model.EmployeeID</dd>
+    <dt>IDCard</dt>
+    <dd>@Model.IDCard</dd>
+    <dt>IssueDate</dt>
+    <dd>@Model.IssueDate</dd>
+    <dt>IssuePlace</dt>
+    <dd>@Model.IssuePlace</dd>
+    <dt>EducationLevel</dt>
+    <dd>@Model.EducationLevel</dd>
+    <dt>Experience</dt>
+    <dd>@Model.Experience</dd>
+</dl>
+<p>@Html.ActionLink("Back to List", "Index")</p>

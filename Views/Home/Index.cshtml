@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <div class="alert alert-info shadow-sm">
+        <h3>Xin chào, <strong>@Session["Username"]</strong> </h3>
+        <p>
+            Vai trò:
+            @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin")
+            {
+                <span class="badge bg-danger">Admin</span>
+            }
+            else
+            {
+                <span class="badge bg-primary">Nhân viên</span>
+            }
+        </p>
+    </div>
+</div>
+

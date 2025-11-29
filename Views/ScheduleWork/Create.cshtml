@@ -1,0 +1,30 @@
+﻿@model QLNS.Models.ScheduleWork
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ScheduleWork Form</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeID)
+        @Html.DropDownList("EmployeeID", null, "-- Select Employee --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmployeeID)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.WorkDate)
+        @Html.TextBoxFor(model => model.WorkDate, "{0:yyyy-MM-dd}", new { @type = "date" })
+        @Html.ValidationMessageFor(model => model.WorkDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Shift, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Shift)
+        @Html.ValidationMessageFor(model => model.Shift)
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+<p>@Html.ActionLink("Back to List", "Index")</p>

@@ -1,0 +1,36 @@
+﻿@model QLNS.Models.UserAccount
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit UserAccount</h2>
+@using (Html.BeginForm("Edit", "UserAccount", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.UserID)
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeID)
+        @Html.DropDownList("EmployeeID", null, "-- Select Employee --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmployeeID)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Username)
+        @Html.ValidationMessageFor(model => model.Username)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PasswordHash, new { @class = "control-label" })
+        @Html.EditorFor(model => model.PasswordHash)
+        @Html.ValidationMessageFor(model => model.PasswordHash)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Role, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Role)
+        @Html.ValidationMessageFor(model => model.Role)
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+<p>@Html.ActionLink("Back to List", "Index")</p>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<QLNS.Models.ScheduleWork>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ScheduleWork List</h2>
+@if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin")
+{
+    <p>
+        @Html.ActionLink("Create new", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>EmployeeID</th>
+        <th>WorkDate</th>
+        <th>Shift</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(item.ScheduleID)</td>
+            <td>@item.EmployeeID</td>
+            <td>@item.WorkDate</td>
+            <td>@item.Shift</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.ScheduleID }) | @Html.ActionLink("Details", "Details", new { id = item.ScheduleID }) | @Html.ActionLink("Delete", "Delete", new { id = item.ScheduleID })</td>
+        </tr>
+    }
+</table>
